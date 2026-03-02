@@ -37,7 +37,7 @@ var (
 )
 
 type OrderModel struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 type Order struct {
@@ -52,11 +52,11 @@ type Order struct {
 }
 
 type OrderItem struct {
-	ID            string `gorm:"primaryKey;size:14" json:"id"`
-	OrderID       string `gorm:"index;size:14;not null" json:"order_id"`
-	Size          string `gorm:"not null" json:"size" form:"size" binding:"required"`
-	Pizza         string `gorm:"not null" json:"pizza" form:"pizza" binding:"required"`
-	Instrunctions string `json:"instructions" form:"instructions"`
+	ID           string `gorm:"primaryKey;size:14" json:"id"`
+	OrderID      string `gorm:"index;size:14;not null" json:"order_id"`
+	Size         string `gorm:"not null" json:"size" form:"size" binding:"required"`
+	Pizza        string `gorm:"not null" json:"pizza" form:"pizza" binding:"required"`
+	Instructions string `json:"instructions" form:"instructions"`
 }
 
 func (o *Order) BeforeCreate(tx *gorm.DB) error {
@@ -74,12 +74,12 @@ func (oi *OrderItem) BeforeCreate(tx *gorm.DB) error {
 }
 
 func (o *OrderModel) CreateOrder(order *Order) error {
-	return o.db.Create(order).Error
+	return o.DB.Create(order).Error
 }
 
 func (o *OrderModel) GetOrder(id string) (*Order, error) {
 	var order Order
-	if err := o.db.Preload("Items").First(&order, "id = ?", id).Error; err != nil {
+	if err := o.DB.Preload("Items").First(&order, "id = ?", id).Error; err != nil {
 		return nil, err
 	}
 	return &order, nil
