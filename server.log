@@ -1,23 +1,30 @@
-time=2026-03-04T11:33:58.064+07:00 level=INFO msg="Database initialized successfully"
+time=2026-03-04T14:41:14.317+07:00 level=INFO msg="Database initialized successfully"
+time=2026-03-04T14:41:14.318+07:00 level=INFO msg="Session store configured" backend=gorm-sqlite lifetime=24h
 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
 [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /                         --> main.(*Handler).ServeNewOrderForm-fm (3 handlers)
-[GIN-debug] POST   /new-order                --> main.(*Handler).HandleNewOrderPost-fm (3 handlers)
-[GIN-debug] GET    /customer/:id             --> main.(*Handler).serveCustomer-fm (3 handlers)
-[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
-[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
-time=2026-03-04T11:33:58.064+07:00 level=INFO msg="Server running on url" url=http://localhost:8080
+[GIN-debug] GET    /                         --> main.(*Handler).ServeNewOrderForm-fm (4 handlers)
+[GIN-debug] POST   /new-order                --> main.(*Handler).HandleNewOrderPost-fm (4 handlers)
+[GIN-debug] GET    /customer/:id             --> main.(*Handler).serveCustomer-fm (4 handlers)
+[GIN-debug] GET    /login                    --> main.(*Handler).HandleLoginGet-fm (4 handlers)
+[GIN-debug] POST   /login                    --> main.(*Handler).HandleLoginPost-fm (4 handlers)
+[GIN-debug] POST   /logout                   --> main.(*Handler).HandleLogout-fm (4 handlers)
+[GIN-debug] GET    /admin                    --> main.(*Handler).ServeAdminDashboard-fm (5 handlers)
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+time=2026-03-04T14:41:14.321+07:00 level=INFO msg="Server running on url" url=http://localhost:8080
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2026/03/04 - 11:34:00 | 400 |     611.927µs |             ::1 | POST     "/new-order"
-[GIN] 2026/03/04 - 11:36:09 | 200 |   12.236528ms |             ::1 | GET      "/customer/5Pr3vqdDR"
-[GIN] 2026/03/04 - 11:36:09 | 304 |    2.186135ms |             ::1 | GET      "/static/pizza.svg"
-[GIN] 2026/03/04 - 11:36:48 | 200 |     590.207µs |             ::1 | GET      "/customer/5Pr3vqdDR"
-[GIN] 2026/03/04 - 11:36:49 | 200 |     511.866µs |             ::1 | GET      "/customer/5Pr3vqdDR"
-[GIN] 2026/03/04 - 11:37:18 | 200 |      498.76µs |             ::1 | GET      "/customer/5Pr3vqdDR"
-[GIN] 2026/03/04 - 11:37:19 | 200 |     568.172µs |             ::1 | GET      "/customer/5Pr3vqdDR"
+[GIN] 2026/03/04 - 14:42:46 | 200 | 309.86ms |             ::1 | POST     "/login"
+{"time":"2026-03-04T14:45:54.180364+07:00","level":"INFO","msg":"User logged in","user_id":42,"action":"login"}
+[GIN] 2026/03/04 - 14:45:54 | 303 |  79.28ms |             ::1 | POST     "/login"
+[GIN] 2026/03/04 - 14:46:50 | 200 | 75.817µs |             ::1 | GET      "/login"
+{"time":"2026-03-04T14:46:54.751769+07:00","level":"INFO","msg":"User logged in","user_id":42,"action":"login"}
+[GIN] 2026/03/04 - 14:46:54 | 303 |  83.03ms |             ::1 | POST     "/login"
+[GIN] 2026/03/04 - 14:46:54 | 200 | 569.566µs |             ::1 | GET      "/admin"
+[GIN] 2026/03/04 - 14:46:58 | 303 |   3.09ms |             ::1 | POST     "/logout"
+[GIN] 2026/03/04 - 14:46:58 | 200 | 38.889µs |             ::1 | GET      "/login"

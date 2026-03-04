@@ -22,6 +22,8 @@ func main() {
 
 	slog.Info("Database initialized successfully")
 
+	sessionStore := setupSessionStore(dbModel.DB, []byte(cfg.SessionSecretKey))
+
 	RegisterCustomValidators()
 
 	h := NewHandler(dbModel)
@@ -33,7 +35,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	setupRoutes(router, h)
+	setupRoutes(router, h, sessionStore)
 
 	slog.Info("Server running on url", "url", "http://localhost:"+cfg.Port)
 	if err := router.Run(":" + cfg.Port); err != nil {
