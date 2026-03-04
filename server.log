@@ -1,0 +1,23 @@
+time=2026-03-04T11:33:58.064+07:00 level=INFO msg="Database initialized successfully"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> main.(*Handler).ServeNewOrderForm-fm (3 handlers)
+[GIN-debug] POST   /new-order                --> main.(*Handler).HandleNewOrderPost-fm (3 handlers)
+[GIN-debug] GET    /customer/:id             --> main.(*Handler).serveCustomer-fm (3 handlers)
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+time=2026-03-04T11:33:58.064+07:00 level=INFO msg="Server running on url" url=http://localhost:8080
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2026/03/04 - 11:34:00 | 400 |     611.927µs |             ::1 | POST     "/new-order"
+[GIN] 2026/03/04 - 11:36:09 | 200 |   12.236528ms |             ::1 | GET      "/customer/5Pr3vqdDR"
+[GIN] 2026/03/04 - 11:36:09 | 304 |    2.186135ms |             ::1 | GET      "/static/pizza.svg"
+[GIN] 2026/03/04 - 11:36:48 | 200 |     590.207µs |             ::1 | GET      "/customer/5Pr3vqdDR"
+[GIN] 2026/03/04 - 11:36:49 | 200 |     511.866µs |             ::1 | GET      "/customer/5Pr3vqdDR"
+[GIN] 2026/03/04 - 11:37:18 | 200 |      498.76µs |             ::1 | GET      "/customer/5Pr3vqdDR"
+[GIN] 2026/03/04 - 11:37:19 | 200 |     568.172µs |             ::1 | GET      "/customer/5Pr3vqdDR"
