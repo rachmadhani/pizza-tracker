@@ -13,6 +13,12 @@ type OrderFormData struct {
 	PizzaSizes []string
 }
 
+type CustomerData struct {
+	Title    string
+	Order    models.Order
+	Statuses []string
+}
+
 type OrderRequest struct {
 	Name         string   `form:"name" binding:"required,min=2,max=100"`
 	Phone        string   `form:"phone" binding:"required,min=10,max=15"`
@@ -34,6 +40,7 @@ func (h *Handler) HandleNewOrderPost(c *gin.Context) {
 
 	if err := c.ShouldBind(&form); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 
 	orderItems := make([]models.OrderItem, len(form.Sizes))
@@ -79,7 +86,9 @@ func (h *Handler) serveCustomer(c *gin.Context) {
 		return
 	}
 
-	c.HTML(http.StatusOK, "customer.tmpl", gin.H{
-		"order": order,
+	c.HTML(http.StatusOK, "customer.tmpl", CustomerData{
+		Title:    "Pizza Order Status" + orderID,
+		Order:    *order,
+		Statuses: models.OrderStatuses,
 	})
 }
